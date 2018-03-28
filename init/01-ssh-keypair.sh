@@ -11,6 +11,7 @@ then
         e_success "Generated a new SSH Keypair"
     else
         e_error "Failed to generate a new SSH Keypair"
+    fi
 else
     e_success "SSH Keypair found at ${PUBKEY}"
 fi
