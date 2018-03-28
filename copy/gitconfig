@@ -1,0 +1,9 @@
+[user]
+    email = "$EMAIL"
+    name = "$NAME"
+[core]
+    excludesfile = ~/.gitignore
+# Use this to set a work dir, and change the commit email address on all
+# repositories inside it
+[includeIf "gitdir:/srv/work/*"]
+    path = ~/.gitconfig.work

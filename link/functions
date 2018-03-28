@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# get current public visible ip
+alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+# force tmux 256 color mode
+alias tmux="tmux -2"

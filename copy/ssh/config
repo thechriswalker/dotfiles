@@ -1,0 +1,8 @@
+# basic global entries
+Host *
+    AddKeysToAgent yes
+
+# include from folder
+# I don't commit most of these to git, but want to be able to add them easily.
+Include ~/.ssh/config.d/*
+

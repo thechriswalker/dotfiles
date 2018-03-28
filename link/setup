@@ -1,0 +1,3 @@
+# initialise scmpuff
+[ -x "$(which scmpuff 2>/dev/null)" ] && eval "$(scmpuff init -s)"
+

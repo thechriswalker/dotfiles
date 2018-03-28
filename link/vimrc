@@ -1,0 +1,14 @@
+set shiftwidth=2 softtabstop=2 ts=2 expandtab
+let g:molokai_original=1
+set t_Co=256
+colorscheme molokai
+set encoding=utf8
+set fileencoding=utf8
+" enable visible whitespace
+set listchars=tab:»·,trail:·,precedes:<,extends:>
+set list
+set showmatch
+set cursorline
+set number
+set bs=2
+syntax on
