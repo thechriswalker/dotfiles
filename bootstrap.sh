@@ -28,5 +28,5 @@ done
 for f in $(ls -1 ./link)
 do
     e_arrow "Linking: $f"
-    ln -si "${BASEDIR}/link/$f" "${HOME}/$f"
+    ln -si "${BASEDIR}/link/$f" "${HOME}/.$f"
 done

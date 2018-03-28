@@ -1,5 +1,5 @@
 install_app () {
-    local $name="${1}"
+    local name="${1}"
     e_arrow "installing snap: ${name}"
     sudo snap install "${name}"
     if [ $? -eq 0 ]
