@@ -1,3 +1,12 @@
+e_arrow () {
+  echo $@
+}
+
+install_apt () {
+    local name="${1}"
+    sudo apt install ${name}
+}
+
 install_app () {
     local name="${1}"
     e_arrow "installing snap: ${name}"
@@ -20,16 +29,12 @@ install_app inkscape
 install_app docker
 
 # and this for sure
-install_app aws-cli
+# install_app aws-cli
+## old snap. use regular apt package
 
 # this is for my blog
 install_app hugo
 
-# this is for keepass
-install_app syncthing
-
 # and here is keepassxc
 install_app keepassxc
 
-# easier than worrying about insiders
-install_app vscode
