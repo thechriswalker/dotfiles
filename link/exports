@@ -1,7 +1,7 @@
 # Paths
-export GOPATH="/srv/go"
-export GOBIN="/srv/go/bin"
-export PATH="${HOME}/bin:${GOBIN}:${PATH}"
+export GOPATH="${HOME}/code/go"
+export GOBIN="${HOME}/code/go/bin"
+export PATH="${HOME}/bin:${GOBIN}:/usr/local/go/bin:${PATH}"
 
 # Make vim the default editor.
 export EDITOR='vim';
@@ -21,4 +21,4 @@ export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
 
 # my own LESS preferences
-export LESS='RXF'
+export LESS='-F -g -i -M -R -w -X -z-4'
