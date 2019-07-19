@@ -1,7 +1,7 @@
 # Rather than include the fonts, here we download and extract them from the website
 
-mkdir ~/.fonts
-getFont() {
+mkdir -p ~/.fonts
+getNerdFont() {
     local variant="${1}"
     e_arrow "Installing font: Mononoki Nerd Font (${variant})"
     curl \
@@ -10,5 +10,5 @@ getFont() {
 	> "~/.fonts/mononoki-${variant}%20Nerd%20Font%20Complete%20Mono.ttf"
 }
 
-getInputFont "Regular"
-getInputFont "Bold"
+getNerdFont "Regular"
+getNerdFont "Bold"

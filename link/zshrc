@@ -22,7 +22,7 @@ SPACESHIP_PROMPT_ORDER=(
 
 SPACESHIP_RPROMPT_ORDER=(
   node
-  golang 
+  golang
   docker
   time
   battery

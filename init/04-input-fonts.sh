@@ -1,6 +1,6 @@
 # Rather than include the fonts, here we download and extract them from the website
 
-mkdir ~/.fonts
+mkdir -p ~/.fonts
 getInputFont() {
     local variant="${1}"
     tmpdir="$(mktemp -d)"
