@@ -27,7 +27,12 @@ SPACESHIP_RPROMPT_ORDER=(
   time
   battery
 )
-#SPACESHIP_CHAR_SYMBOL=""
+if [ "$TERM_PROGRAM" = "vscode" ]
+then
+  SPACESHIP_RPROMPT_ORDER=()
+fi
+
+#SPACESHIP_CHAR_SYMBOL="$ "
 SPACESHIP_PROMPT_DEFAULT_PREFIX=""
 SPACESHIP_CHAR_COLOR_SUCCESS="049"
 SPACESHIP_CHAR_COLOR_FAILURE="125"
@@ -94,6 +99,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  fast-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -116,3 +122,8 @@ require "exports"
 require "functions"
 
 true # last command is true ;)
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
