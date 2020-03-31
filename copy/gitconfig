@@ -1,9 +1,27 @@
 [user]
-    email = "$EMAIL"
-    name = "$NAME"
+    # force setting identities directly on a repository
+    useConfigOnly = true
+
+# add identities as needed.
+# idea from: https://www.micah.soy/posts/setting-up-git-identities/
+[user "personal"]
+    name = Chris Walker
+    email = chris@thechriswalker.net
+    sigingkey = BA9ADF7F78C6F971
+
 [core]
     excludesfile = ~/.gitignore
-# Use this to set a work dir, and change the commit email address on all
-# repositories inside it
-[includeIf "gitdir:/srv/work/*"]
-    path = ~/.gitconfig.work
+
+[pull]
+    rebase = true
+
+[commit]
+    gpgsign = true
+
+[alias]
+    # helpers to set the identity for each repo.
+    idprop = '! git config user.$2 "$(git config user.$1.$2)'
+    identity = '! git idprop $1 name; git idprop $1 email; git idprop $1 signingkey;'
+    # other aliases
+    refresh = pull origin master
+    hash = rev-parse HEAD

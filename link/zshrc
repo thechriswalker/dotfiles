@@ -121,11 +121,11 @@ require "setup"
 require "exports"
 require "functions"
 
-true # last command is true ;)
-
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source /home/chris/.config/broot/launcher/bash/br
+
+true # last command is true ;)
