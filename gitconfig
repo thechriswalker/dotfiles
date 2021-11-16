@@ -1,0 +1,14 @@
+[user]
+	name = Chris Walker
+	email = chris@thechriswalker.net
+	# remember to update this if we pick a new key
+	signingKey = 79805D8FAB447E67
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = master
+[alias]
+	hash = rev-parse HEAD
+
+[pull]
+	rebase = true

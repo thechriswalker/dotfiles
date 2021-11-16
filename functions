@@ -1,0 +1,66 @@
+# get current public visible ip
+alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+# force tmux 256 color mode
+alias tmux="tmux -2"
+
+# stop showing ubuntu snaps in df
+alias df="df -x squashfs"
+
+if which bat >/dev/null 2>&1
+then
+  alias cat=bat
+fi
+
+# awesome file find
+function f() {
+  fzf --preview '[[ $(file --mime {}) =~ binary ]] &&
+                 echo {} is a binary file ||
+                 (bat --style=numbers --color=always {} ||
+                  cat {}) 2> /dev/null | head -500' "$@"
+}
+
+# git add find
+function gaf() {
+  # get git status and find files where the second character is not ' '
+  # then trim the first 3
+  # pipe into fzf to choose multi then to xargs to git add.
+  # finally output status to see where we are at.
+  local preview="$(cat <<"EOF"
+local file="$(echo {} |cut -c4-)"
+local kind="$(echo {} |cut -c2)"
+case $kind in
+  "M"|"U") # modified
+    git diff --color=always -- "$file"
+  ;;
+  "D") # deleted
+    git diff --color=always -- "$file"
+  ;;
+  "U") # updated  
+    git diff --color=always -- "$file"
+  ;;
+  "?") # untracked
+    echo "│ UNTRACKED: $file"
+    echo "└─────────────────────────────────────"
+    bat --style=numbers --color=always "$file"
+  ;;
+  "!") # ignored
+    echo "│ IGNORED: $file"
+    echo "└─────────────────────────────────────"
+    bat --style=numbers --color=always "$file"
+  ;;
+  *)
+    echo "│ UNKNOWN: $file"
+    echo "└─────────────────────────────────────"
+    bat --style=numbers --color=always "$file"
+  ;;
+esac
+EOF
+)"
+  git status -s --untracked-files=all | grep -e '^.\S' | fzf --multi --preview "${preview}" | cut -c4- | xargs git add && gs
+#| fzf --multi --preview 'grep -ve "^.?" <<<"{}" >/dev/null && git diff --color=always $(echo {} | cut -c4-) || git diff --color=always ~/.empty $(echo {} | cut -c4-)' \
+}
+
+
+# better than jq for pretty-printing smallish JSON
+alias jp="node -p 'util.inspect.defaultOptions.depth=null;JSON.parse(fs.readFileSync(\"/dev/stdin\"))'"

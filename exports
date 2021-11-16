@@ -1,0 +1,43 @@
+# first the path to this drive.
+DPATH=/data
+
+# golang
+export PATH=/usr/local/go/bin:${PATH}
+
+# node/yarn global
+export PATH=$(yarn global bin):${PATH}
+
+# my bins here and HOME
+export PATH=${DPATH}/bin:${HOME}/bin:${PATH}
+
+# Make vim the default editor.
+export EDITOR='vim';
+
+# Enable persistent REPL history for `node`.
+export NODE_REPL_HISTORY=~/.node_history;
+# Allow 32³ entries; the default is 1000.
+export NODE_REPL_HISTORY_SIZE='32768';
+# Use sloppy mode by default, matching web browsers.
+export NODE_REPL_MODE='sloppy';
+
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
+export PYTHONIOENCODING='UTF-8';
+
+# Prefer US English and use UTF-8.
+export LANG='en_US.UTF-8';
+export LC_ALL='en_US.UTF-8';
+
+# my own LESS preferences
+export LESS='-F -g -i -M -R -w -X -z-4'
+
+# JQ color scheme...
+#                 null fals true num  str  arr  obj
+export JQ_COLORS='1;30:1;39:1;39:1;33:1;36:1;30:1;30'
+
+
+# make scmpuff work
+[ -x "$(which scmpuff 2>/dev/null)" ] && eval "$(scmpuff init -s)"
+
+# make fzf work better
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
